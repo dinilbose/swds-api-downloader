@@ -105,8 +105,12 @@ class APIDownload:
             file_path = '/'.join(file_path) + '/'
             filename = self.path + file_path + file_name
             logging.info("""   Downloading file: {} to {}""".format(file_name, filename))
-
-            request = urllib.request.Request(file['url'])
+            #Changes made in download url to counter issue of 403 error
+            extract_url=file['url'].split('download')[1]
+            download_url='http://www2.inpe.br/climaespacial/SpaceWeatherDataShare/download'+extract_url
+            #request = urllib.request.Request(file['url'])
+            request = urllib.request.Request(download_ur)
+            
             request.add_header('Authorization', self.get_authorization())
             os.makedirs(os.path.dirname(filename), exist_ok=True)
             try:
