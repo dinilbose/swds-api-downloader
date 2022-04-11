@@ -109,7 +109,7 @@ class APIDownload:
             extract_url=file['url'].split('download')[1]
             download_url='http://www2.inpe.br/climaespacial/SpaceWeatherDataShare/download'+extract_url
             #request = urllib.request.Request(file['url'])
-            request = urllib.request.Request(download_ur)
+            request = urllib.request.Request(download_url)
             
             request.add_header('Authorization', self.get_authorization())
             os.makedirs(os.path.dirname(filename), exist_ok=True)
